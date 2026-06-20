@@ -1,0 +1,12 @@
+node_modules
+dist
+.env
+.DS_Store
+coverage
+*.log
+.amplify
+.vscode
+
+# Amplify outputs are generated locally or by the Amplify build pipeline.
+amplify_outputs.json
+
