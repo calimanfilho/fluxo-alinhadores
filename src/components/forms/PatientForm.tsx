@@ -1,7 +1,7 @@
 import { Button, Flex, TextAreaField, TextField } from '@aws-amplify/ui-react';
 import { useEffect, useState, type FormEvent } from 'react';
 import type { PatientInput } from '../../lib/domain';
-import { normalizeOptional, toInputDate } from '../../lib/format';
+import { normalizeOptional, normalizePhoneNumber, toInputDate } from '../../lib/format';
 import { validatePatient, type FieldErrors } from '../../lib/validation';
 import { FormField } from '../ui/FormField';
 
@@ -52,7 +52,7 @@ export function PatientForm({ initialValues, onSubmit, submitLabel, busy }: Pati
       name: values.name.trim(),
       birthDate: normalizeOptional(values.birthDate ?? ''),
       document: normalizeOptional(values.document ?? ''),
-      phone: normalizeOptional(values.phone ?? ''),
+      phone: normalizePhoneNumber(values.phone ?? ''),
       email: normalizeOptional(values.email ?? ''),
       notes: normalizeOptional(values.notes ?? ''),
     });
@@ -91,13 +91,14 @@ export function PatientForm({ initialValues, onSubmit, submitLabel, busy }: Pati
           />
         </FormField>
 
-        <FormField label="Telefone">
+        <FormField label="Telefone" error={errors.phone}>
           <TextField
             label="Telefone"
             labelHidden
+            type="tel"
             value={values.phone ?? ''}
             onChange={(event) => updateField('phone', event.target.value)}
-            placeholder="(00) 00000-0000"
+            placeholder="(00) 00000-0000 ou +5571996527148"
           />
         </FormField>
 

@@ -12,6 +12,7 @@ import type {
   PatientRecord,
   PatientUpdateInput,
 } from '../lib/domain';
+import { normalizePhoneNumber } from '../lib/format';
 
 const client = generateClient<Schema>({ authMode: 'userPool' });
 
@@ -77,7 +78,7 @@ export async function createPatient(input: PatientInput): Promise<PatientRecord>
     name: sanitizeText(input.name),
     birthDate: input.birthDate || undefined,
     document: input.document?.trim() || undefined,
-    phone: input.phone?.trim() || undefined,
+    phone: normalizePhoneNumber(input.phone),
     email: input.email?.trim() || undefined,
     notes: input.notes?.trim() || undefined,
   });
@@ -96,7 +97,7 @@ export async function updatePatient(input: PatientUpdateInput): Promise<PatientR
     name: sanitizeText(input.name),
     birthDate: input.birthDate || undefined,
     document: input.document?.trim() || undefined,
-    phone: input.phone?.trim() || undefined,
+    phone: normalizePhoneNumber(input.phone),
     email: input.email?.trim() || undefined,
     notes: input.notes?.trim() || undefined,
   });

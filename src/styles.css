@@ -12,9 +12,9 @@
   font-weight: 400;
   color: #132238;
   background:
-    radial-gradient(circle at top left, rgba(28, 116, 180, 0.16), transparent 34%),
-    radial-gradient(circle at top right, rgba(44, 91, 120, 0.12), transparent 30%),
-    linear-gradient(180deg, #f8fbff 0%, #edf3f8 100%);
+    radial-gradient(circle at top left, rgba(28, 116, 180, 0.14), transparent 34%),
+    radial-gradient(circle at top right, rgba(44, 91, 120, 0.08), transparent 30%),
+    linear-gradient(180deg, #f8fbff 0%, #eef4f8 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -65,15 +65,30 @@ a {
   flex-direction: column;
   gap: 1.25rem;
   padding: 1.5rem;
-  background: rgba(8, 24, 42, 0.96);
-  color: #f3f7fb;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 249, 253, 0.98) 100%);
+  color: #132238;
+  border-right: 1px solid rgba(19, 34, 56, 0.08);
+  box-shadow: 18px 0 40px rgba(18, 38, 66, 0.05);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem;
+  border-radius: 1.1rem;
+  background:
+    linear-gradient(135deg, rgba(28, 116, 180, 0.12), rgba(44, 91, 120, 0.05)),
+    rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(28, 116, 180, 0.12);
 }
 
 .brand__eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.68);
+  color: #2c5b78;
 }
 
 .nav {
@@ -85,27 +100,33 @@ a {
 .nav__link {
   padding: 0.8rem 1rem;
   border-radius: 0.85rem;
-  color: rgba(243, 247, 251, 0.82);
-  background: transparent;
+  color: rgba(19, 34, 56, 0.82);
+  background: rgba(19, 34, 56, 0.02);
+  border: 1px solid transparent;
   transition:
     background 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .nav__link:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(28, 116, 180, 0.08);
+  border-color: rgba(28, 116, 180, 0.12);
   transform: translateX(2px);
 }
 
 .nav__link--active {
-  background: rgba(92, 168, 217, 0.2);
-  color: #fff;
+  background: linear-gradient(135deg, rgba(28, 116, 180, 0.18), rgba(44, 91, 120, 0.1));
+  color: #12324d;
+  border-color: rgba(28, 116, 180, 0.18);
+  box-shadow: 0 10px 20px rgba(18, 38, 66, 0.06);
 }
 
 .sidebar__summary {
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(19, 34, 56, 0.08);
 }
 
 .app-shell__content {
@@ -123,6 +144,7 @@ a {
   border-bottom: 1px solid rgba(19, 34, 56, 0.08);
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
 }
 
 .content {
@@ -208,6 +230,9 @@ a {
     position: sticky;
     top: 0;
     z-index: 10;
+    border-right: none;
+    border-bottom: 1px solid rgba(19, 34, 56, 0.08);
+    box-shadow: 0 18px 30px rgba(18, 38, 66, 0.06);
   }
 
   .login-page {

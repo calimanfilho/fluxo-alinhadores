@@ -51,6 +51,29 @@ export function normalizeOptional(value: string) {
   return trimmed.length > 0 ? trimmed : undefined;
 }
 
+export function normalizePhoneNumber(value?: string | null) {
+  const trimmed = value?.trim() ?? '';
+  if (!trimmed) {
+    return undefined;
+  }
+
+  const compact = trimmed.replace(/[^\d+]/g, '');
+  if (compact.startsWith('+')) {
+    return /^\+\d{8,15}$/.test(compact) ? compact : undefined;
+  }
+
+  const digits = compact.replace(/\D/g, '');
+  if (digits.length === 10 || digits.length === 11) {
+    return `+55${digits}`;
+  }
+
+  if (digits.length >= 8 && digits.length <= 15) {
+    return `+${digits}`;
+  }
+
+  return undefined;
+}
+
 export function formatBytes(size?: number | null) {
   if (!size || size <= 0) {
     return '0 B';

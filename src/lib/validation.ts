@@ -1,4 +1,5 @@
 import { CASE_STATUSES, ARCH_OPTIONS, PRIORITY_LEVELS, type CaseInput, type PatientInput } from './domain';
+import { normalizePhoneNumber } from './format';
 
 export type FieldErrors = Record<string, string>;
 
@@ -19,6 +20,10 @@ export function validatePatient(values: PatientInput) {
 
   if (values.email && !isEmail(values.email)) {
     errors.email = 'Informe um e-mail válido.';
+  }
+
+  if (values.phone && !normalizePhoneNumber(values.phone)) {
+    errors.phone = 'Informe um telefone válido com DDD. Exemplo: +5571996527148 ou 71996527148.';
   }
 
   if (values.birthDate && !isDate(values.birthDate)) {

@@ -139,8 +139,9 @@ git push
 1. Faça push do repositório no GitHub.
 2. Crie um app no AWS Amplify Console.
 3. Conecte o repositório e selecione a branch.
-4. Confirme o build automático do frontend e do backend Gen 2.
-5. Use o fluxo de preview/sandbox para validação local antes do merge.
+4. O arquivo `amplify.yml` na raiz define o build do backend Gen 2 e do frontend Vite.
+5. Confirme o build automático do frontend e do backend Gen 2.
+6. Use o fluxo de preview/sandbox para validação local antes do merge.
 
 ### Instruções operacionais
 
@@ -174,6 +175,7 @@ Arquivo opcional:
 - Kanban de produção por etapa.
 - Auditoria detalhada de alterações.
 - Notificações automáticas por atraso ou entrega.
+- Configuração de remetente customizado de e-mail via Amazon SES no Cognito, para substituir o `no-reply@verificationemail.com` padrão.
 
 ## Licença
 
